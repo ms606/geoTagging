@@ -4,48 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 
 <body>
 
     <h1> Geo Location App </h1>
+       
+    <div><a href="/">enter<a> | <a href="../logs/index.html">list</a></div>
 
     <p> latitude:  <span id="latitude"></span> &deg;<br>
         longitude: <span id="longitude"></span>&deg; 
     </p>
 
-    <input id="mood" value="rainbow" />
+    <input  id="mood" value="rainbow" />
     <button id="submit"> Submit</button>
 
-    <script>
-        if('geolocation' in navigator){
-           navigator.geolocation.getCurrentPosition(async position => {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            document.getElementById("latitude").textContent = position.coords.latitude;
-            document.getElementById("longitude").textContent = position.coords.longitude;
-            
-            const data = {lat, lon};
-
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                    },
-                body: JSON.stringify(data)
-            };
-            const response = await fetch('/api', options);
-            const jj = await response.json();
-            console.log(jj);
-            });
-        }
-        else {
-           console.log('geolocation not available') 
-        }
-
-    </script>
-   
-
+    <script src="sketch.js"></script>
 
 </body>
 </html>
